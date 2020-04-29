@@ -1,5 +1,13 @@
 ---
 title: {{ title }}
-date: {{ date }}
-tags:
+toc: true
+thumbnail: /image/thumbnails.png
+tags: 
+    - tagToDefine
+categories:
+    - catToDefine
+date:
 ---
+
+Foreword text
+<!-- more -->
