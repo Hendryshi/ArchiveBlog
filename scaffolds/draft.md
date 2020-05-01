@@ -1,12 +1,16 @@
 ---
 title: {{ title }}
+permalink: {{ title }}
+date: {{ date }}
 toc: true
-thumbnail: /image/thumbnails.png
+
+thumbnail: /thumbnails/imgDefault.jpg
 tags: 
     - tagToDefine
 categories:
     - catToDefine
-date:
+
+update: {{ date }}
 ---
 
 Foreword text
