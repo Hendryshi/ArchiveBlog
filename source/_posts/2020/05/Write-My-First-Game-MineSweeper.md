@@ -11,15 +11,15 @@ categories:
     - Project
 
 date: 2020-05-01 00:00:00
-update: 2020-05-01 00:00:00
+update: 2020-05-02 00:00:00
 ---
 
 This is my first game developed by C# WinForm platform. The initial object is to practice my C# level. So the first game jump into my mind is "MineSweeper". It is enough simple and interesting. In this post I will list my conception and some difficult point during my development.
 <!-- more -->
 
-**Welcome to see my [project](https://github.com/Hendryshi/MineSweeper) in github.**
+**To see my [MineSweeper project](https://github.com/Hendryshi/MineSweeper) in github.**
 
-**See also [The rule for mineSweeper](http://www.freeminesweeper.org/help/minehelpinstructions.html)**
+**See also [the rule for mineSweeper](http://www.freeminesweeper.org/help/minehelpinstructions.html)**
 
 
 # Class Conception
@@ -53,25 +53,22 @@ Game *-- Frame -->
 
 ![](class.png)
 
-I used globally three objects in models: 
-- Class `Game` presents one game, every time when we create or restart a new game, this class is recreated. Through this class we control the results of game, and some other properties like `flagCounts` or `gameLevel`.
+In this application three main objects are used in models:
+- Class `Game` presents one game, every time when we create or restart a new game, this class is created. Trough this class we have the proprieties like `gameResults`, `flagCounts` and `gameLevel`.
 
-- Class `Square` presents every small square on the board, it is applied to a two-dimension array in class `Game`. In this class, I used an enumeration to define the status of square(open, close, flagged...). The value of squares (-1 for mined, and [0-9] for others), and position in the boards is also listed in this class.
+- Class `Square` presents every single squares on the board, it is applied to a two-dimension array in class `Game`. In this class, we have the proprieties like the value of square (-1 for mined, and [0-9] for others), the position in the boards. Also I use an enumeration `` to define the status of square(open, close, flagged...)
 
-- Class `Frame` presents the board on the interface. I used this class to do every drawing function. every drawing function return a temporary bitmap picture for the mainForm to apply on the interface.
-
+- Class `Frame` presents the board on the interface. this class takes charges of the drawing function. Every drawing function return a temporary bitmap picture in the backend, and the front interface cover this bitmap to itself.
 
 
 # Program process
 
-<!--  
-  graph LR
-  
+  <!-- graph LR
   A(MouseDown)
-  B{L, R or Two}
+  B{Left, Right or Both}
   C(MouseClick)
   D[Add flag]
-  E(Open Square)
+  E(Open single square)
   F{Hit Mine or Win}
   G([Lose])
   H(MouseUp)
@@ -80,33 +77,37 @@ I used globally three objects in models:
   style E fill: #FFF333
   style I fill: #FFF333
   style B fill: #9999FF
-  style F fill: #9999FF
--->
+  style F fill: #9999FF -->
+
 [comment]: # (
-  A --> B
-  B -->|L| C
-  B -->|Two| H
-  H --> I --> F
-  C --> E --> F
-  E -->|Recursion| E
-  I -->|Recursion| I
-  F -->|Hit Mine| G
-  F -->|Continue| A
-  F -->|Win| J
-  B -->|Right| D --> A)
+A --> B
+B -->|Left| C
+B -->|Right| H
+H --> I --> F
+C --> E --> F
+E -->|Expand if value = 0| E
+I -->|Expand if value = 0| I
+F -->|Hit Mine| G
+F -->|Continue| A
+F -->|Win| J
+B -->|Right| D --> A)
 
 ![](process.png)
 
-As described above, every time we click our mouse, the program enter into different operation defined in object `Game` according to different mouse event (left click, right click or both click). And at the end of every function, we use the object `Frame` to redraw the board and reflect to the interface.
+As described as above, every time when we click the mouse, the program enter into different functions defined in object `Game` according to the different mouse event (left click, right click or both click). And at the end of every function, we call the function drawing in `Frame` to refresh our frontend interface.
 
 # Some focal points in my development
 
 ## Different mouse events
 
-In the program, I use many different mouse events. I'd like to list as below by calling order. Note that to save the status of my left click and right click, I use two properties `leftDown` and `rightDown` in my object winForm.
+In the program, I use many different mouse events. I'd like to list as below by raising order. You can find the completely mouse events definitions [**here**](https://docs.microsoft.com/en-us/dotnet/framework/winforms/mouse-events-in-windows-forms).
 
-- **MouseMove event**: This function is called when your mouse are moving 
-    - As I want to realise that if I hold clicking my left mouse and when moving through the board, all the squares will change their status (like a button is pressed), this event is called. 
+Note that in my program, I don't know it's which click are mouse down or up, I use two properties `leftDown` and `rightDown` to keep and record the status of my clicks.
+
+- **MouseMove event**: This function is raised when your mouse's position are changed.
+
+    I use this event to realize that when I keep holding my left click and moving on the board, all passing squares are pressed down.
+
     ```csharp
     private void pnlMine_MouseMove(object sender, MouseEventArgs e)
     {
@@ -119,10 +120,11 @@ In the program, I use many different mouse events. I'd like to list as below by 
             }
         }
     }
-  ```
+    ```
 
-- **MouseDown event**: This function is called when your mouse is click down
-    - I use this function to add my flag if it's the right click, also if left click, I will set the property `leftDown` to be true and use it in mouseUp function.
+- **MouseDown event**: This function is called when your mouse is clicked down
+    
+    I use this function to add flag if it's the right click, also if left click, I will set the property `leftDown` to be true and use it in mouseUp function later.
 
     ```csharp
     private void pnlMine_MouseDown(object sender, MouseEventArgs e)
@@ -152,7 +154,8 @@ In the program, I use many different mouse events. I'd like to list as below by 
     ```
 
 - **MouseClick event**: This function is called after function MouseDown
-    - This function is the most common mouse event, I use it to open a single square if it's left click.
+    
+    This function is the most common mouse event, I use it to open a single square if it's left click.
 
     ```Csharp
     private void pnlMine_MouseClick(object sender, MouseEventArgs e)
@@ -171,7 +174,8 @@ In the program, I use many different mouse events. I'd like to list as below by 
     }
     ```
 - **MouseUp event**: This function is called the moment when your mouse is click up (the position of click up). 
-    - I use this function to open around squares if it's both click (leftDown && rightDown)
+    
+    I use this function to open around squares if it's both click (leftDown && rightDown)
 
     ```Csharp
     private void pnlMine_MouseUp(object sender, MouseEventArgs e)
@@ -200,62 +204,74 @@ In the program, I use many different mouse events. I'd like to list as below by 
 
 ## The drawing jobs
 
-As this is my first winForm application, I know few about the windows GDI+ technology, however the drawing of my mainForm is simple enough. As for the mine panel and the information panel I just use the existing picture to cover on my board.
+As this is my first winForm application, I know few about the [**windows GDI+ technology**](https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-gdi-start), fortunately the drawing functions I use in my application is simple enough. 
 
 - **Create the frame**:
 
     ![](frame.png)
 
-    - When the game is started, the first thing we do is to create the entire frame, To realize that, I created three empty bitmap for the temporary buffer image (one for info panel, one for mine panel, and one for main panel) in the frame object.
+    When the game is started, the first thing we do is to create the entire frame, To realize that, I created three empty bitmap as temporary buffer image (one for info panel, one for mine panel, and one for main panel) in the frame object. They all have the same size as the frontend frame
 
-        ```csharp
-        bufferMainFrame = new Bitmap(rctGameField.Width, rctGameField.Height);
-        bufferInfoFrame = new Bitmap(rctPnlInfo.Width, rctPnlInfo.Height);
-        bufferTimerFrame = new Bitmap(rctPnlTimer.Width, rctPnlTimer.Height);
-        bufferMineFrame = new Bitmap(rctPnlMine.Width, rctPnlMine.Height);
+    ```csharp Create a new bitmap and initialize it by color Gray 
+    bufferMainFrame = new Bitmap(rctGameField.Width, rctGameField.Height);
+    bufferInfoFrame = new Bitmap(rctPnlInfo.Width, rctPnlInfo.Height);
+    bufferTimerFrame = new Bitmap(rctPnlTimer.Width, rctPnlTimer.Height);
+    bufferMineFrame = new Bitmap(rctPnlMine.Width, rctPnlMine.Height);
 
-        Graphics.FromImage(bufferMainFrame).Clear(GRAY);
-        Graphics.FromImage(bufferInfoFrame).Clear(GRAY);
-        Graphics.FromImage(bufferTimerFrame).Clear(GRAY);
-        Graphics.FromImage(bufferMineFrame).Clear(GRAY);
-        ```
+    Graphics.FromImage(bufferMainFrame).Clear(GRAY);
+    Graphics.FromImage(bufferInfoFrame).Clear(GRAY);
+    Graphics.FromImage(bufferTimerFrame).Clear(GRAY);
+    Graphics.FromImage(bufferMineFrame).Clear(GRAY);
+    ```
+    >The function `Graphics.FromImage(bufferMineFrame)` can get the brush of this image.
+    >The function `Graphics.Clear(GRAY)` can clear a picture by a specified color (Gray in here).
+
+
 - **Draw the squares**:
-    - To draw the squares on the board, it's simple, you just need to change the image on the right position of the board and draw it on your temporary bitmap. The more difficult one is drawing the main frame, as you need to calculate every position and style. Below is the function to draw the square.
+    
+    In the game, you need to open squares with different value. According to the different value of square, you need to draw different image on the specified position of the temporary image.
 
-        ```csharp
-        public Bitmap DrawSquare(Square square)
-        {
-            Graphics g = Graphics.FromImage(bufferMineFrame);
-            int srcY = (int)square.Status + (square.Status == MineStatus.OpenedNumber ? (Square.MaxSquareNum - square.Value) * ImgMineUnitWidth : 0);
-            Rectangle mineRect = new Rectangle(square.Location, new Size(squareSize, squareSize));
-            Rectangle srcRect = new Rectangle(new Point(0, srcY), new Size(ImgMineUnitWidth, ImgMineUnitWidth));
+    ```csharp Function Draw Square
+    public Bitmap DrawSquare(Square square)
+    {
+        Graphics g = Graphics.FromImage(bufferMineFrame);
+        int srcY = (int)square.Status + (square.Status == MineStatus.OpenedNumber ? (Square.MaxSquareNum - square.Value) * ImgMineUnitWidth : 0);
+        Rectangle mineRect = new Rectangle(square.Location, new Size(squareSize, squareSize));
+        Rectangle srcRect = new Rectangle(new Point(0, srcY), new Size(ImgMineUnitWidth, ImgMineUnitWidth));
 
-            GraphicsUnit units = GraphicsUnit.Pixel;
-            g.DrawImage(imgMine, mineRect, srcRect, units);
+        GraphicsUnit units = GraphicsUnit.Pixel;
+        g.DrawImage(imgMine, mineRect, srcRect, units);
 
-            return bufferMineFrame;
-        }
-        ```
-    - The `graphics` g is to get the pen of the image, and the function `g.DrawImage` is used to draw your image `imgMine`. Note that the parameter `srcRect` is the part of image you choose in your image `imgMine`.   
-
+        return bufferMineFrame;
+    }
+    ```
+    >Function [**Graphic.DrawImage**](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics.drawimage?view=dotnet-plat-ext-3.1) can draw a specified image on the target frame. 
+    >`imgMine` is your image that you choose to put on the target frame, `srcRect` is the part of your image (imgMine).
+    
 
 - **Refresh the square on the board**:
-    - As some of you may ask why you have to draw on the temporary bitmap and covering it to the real panel ? why we can't draw the image directly in the real panel?
-    - There are two reasons: the first is that in my opinion the logical to draw and refresh the image need to be done in the backend, not in the controls directly. And the second and more important reason is that if we draw the image directly in real panel, that will cause a flash effect when many squares are updated in one time. As it is drawn one by one, though the interval time is short, we will also see the flash and that's not good. So we choose to draw all the squares in a temporary image and cover it to the real image only one time. 
+    As some of you may ask why you have to draw on the temporary bitmap and cover it to the frontend interface ? why we cannot draw the image directly on the frontend board ?
+    
+    >There are two reasons:   
+    >The first is that in my opinion the logic to draw and refresh the image are something in the backend, The frontend interface only call the function in the backend to refresh its frame.  
+    >
+    >The second and more important reason is that if we draw the image directly in frontend frame, when many squares are updated in one time, every seconds the frame is being drawn, that will cause a blink effect. So we choose to draw all the squares in a temporary buffer picture and apply it to the frontend frame only one time. 
 
-        ```csharp The function to covering the temporary image
-        private void RefreshFrame()
-        {
-            pnlMine.CreateGraphics().DrawImage(game.GameFrame.MineFrame, ClientRectangle.Location);
-            pnlInfo.CreateGraphics().DrawImage(game.GameFrame.InfoFrame, ClientRectangle.Location);
-        }
-        ```
+    ```csharp Function to apply the temporary image to the frontend frame
+    private void RefreshFrame()
+    {
+        pnlMine.CreateGraphics().DrawImage(game.GameFrame.MineFrame, ClientRectangle.Location);
+        pnlInfo.CreateGraphics().DrawImage(game.GameFrame.InfoFrame, ClientRectangle.Location);
+    }
+    ```
 
 ## The function to open the square
 
-- There are two options to open the squares, one is to left click a closed square, the other is to both click an opened square if the around squares are all flagged according to the value of this square (sqValue - flagArround = 0). These two options are both called a recursion function. The algorithm is if the value of square is 0, you should traverse the 8 around squares and do the same verification for the 8 squares. 
+- There are two ways to open the squares, one is to left click a closed square, the around 8 squares need to open if the value equals to 0
+- The other is to both click an opened square, if it has the same count of flag around it as the value of this square, they need to be expanded also.
+- Both two ways need a recursive function
 
-```csharp The recursion function
+```csharp Recursive function
 public bool ExpandSquares(Square sq)
 {
     bool noError = true;
@@ -273,7 +289,7 @@ public bool ExpandSquares(Square sq)
 }
 ```
 
-```csharp The function to get the around squares according different condition
+```csharp Function to get the around squares according different condition
 public List<Square> GetAroundSquare(Square[,] squares, bool excludeMine = false, bool excludeOpen = false)
 {
     var query = from Square sq in squares 
@@ -293,76 +309,82 @@ public List<Square> GetAroundSquare(Square[,] squares, bool excludeMine = false,
 
 ## Yates shuffle Algorithm
 
-- This algorithm is to set the mines randomly in the board (99 mines of 480 squares). The theory of the algorithm is that I switch my two-dimension array to one dimension, and I suppose that the first 99 squares are mines. Then I do the boucle from the last one to the fist item. I switch the last item with randomly first n-1 items. Do it for n-1 times. 
-- The difficulty is that the first click of a game can't be a mine. So that change my algorithm. I cannot set my mine when creating my object Game, but should set all the mines after the first click on the board. Moreover, the click square should only be 0 and it can open a block of squares around it (the around square should not be mine). To solve this problem, I set the first 99 squares as mine when creating game object, and after the first click, I calculate how many mines around the first square (include itself), and add the number of mine to the squares after 99.
+``` csharp Algorithm global
+    for(int i = n-1; i >= 0; i--)
+        swap(arr[i], arr[rand() % (i+1)])
+```
+- At start of game, you need to set randomly the mines on the board. And set the value of each square according to the mine count around it.
+- In my application, I use the algorithm Yates shuffle to set my mines. I suppose that in my square array, the first k squares are mines (k is your mine count), and I switch my arr[i] square with a random(arr[0] ~ arr[i-1]) square. And do this for n times. (n is your total squares)
+- After you have set your mines, you need to parse all your mine, and set the value of around square = value + 1.
+- The difficulty is that the first click of a game cannot be a mine. So that change my algorithm. I can only set my mines and value of other squares after the first click on the board. Moreover, the click square should only be 0 so that it can expand a block of squares around it (the around square should not be mine). To solve this problem, I change my function as below
 
-    ```csharp The function of Yates shuffle
-    private void KnuthShuffleMine(Point point)
+```csharp The function of Yates shuffle
+private void KnuthShuffleMine(Point point)
+    {
+        Random ran = new Random();
+        int indexX = point.X / squareSize;
+        int indexY = point.Y / squareSize;
+        Square sqPoint = squares[indexX, indexY];
+
+        int indexOffset = sqPoint.GetAroundMineCount(squares) + (sqPoint.IsMine() ? 1 : 0);
+
+        for(int y = 0; y <= squares.GetLength(1) - 1; y++)
         {
-            Random ran = new Random();
-            int indexX = point.X / squareSize;
-            int indexY = point.Y / squareSize;
-            Square sqPoint = squares[indexX, indexY];
-
-            int indexOffset = sqPoint.GetAroundMineCount(squares) + (sqPoint.IsMine() ? 1 : 0);
-
-            for(int y = 0; y <= squares.GetLength(1) - 1; y++)
+            for(int x = 0; x <= squares.GetLength(0) - 1; x++)
             {
-                for(int x = 0; x <= squares.GetLength(0) - 1; x++)
+                // this area cannot be mine
+                if(x >= indexX - 1 && x <= indexX + 1 && y >= indexY - 1 && y <= indexY + 1)
+                    squares[x, y].Value = 0;
+                else
                 {
-                    // this area cannot be mine
-                    if(x >= indexX - 1 && x <= indexX + 1 && y >= indexY - 1 && y <= indexY + 1)
-                        squares[x, y].Value = 0;
-                    else
-                    {
-                        Point ranP = GetRandomPoint(ran, x, y, indexX, indexY);
-                        int ranSquareValue = ranP.Y * squares.GetLength(0) + ranP.X < mineCount + indexOffset ? -1 : squares[ranP.X, ranP.Y].Value;
+                    Point ranP = GetRandomPoint(ran, x, y, indexX, indexY);
+                    int ranSquareValue = ranP.Y * squares.GetLength(0) + ranP.X < mineCount + indexOffset ? -1 : squares[ranP.X, ranP.Y].Value;
 
-                        int value = y * squares.GetLength(0) + x < mineCount + indexOffset ? -1 : squares[x, y].Value;
-                        squares[x, y].Value = ranSquareValue;
-                        squares[ranP.X, ranP.Y].Value = value;
-                        gameFrame.DrawSquare(squares[x, y]);
-                    }
-                }
-            }
-
-            var queryMine = from Square sq in squares
-                            where sq.IsMine()
-                            select sq;
-
-            foreach(Square sq in queryMine)
-            {
-                List<Square> lstAroundSquare = sq.GetAroundSquare(squares, true);
-                foreach(Square sqAround in lstAroundSquare)
-                {
-                    sqAround.Value += 1;
-                    gameFrame.DrawSquare(sqAround);
+                    int value = y * squares.GetLength(0) + x < mineCount + indexOffset ? -1 : squares[x, y].Value;
+                    squares[x, y].Value = ranSquareValue;
+                    squares[ranP.X, ranP.Y].Value = value;
+                    gameFrame.DrawSquare(squares[x, y]);
                 }
             }
         }
-    ```
 
-    ```csharp The function to get random point
-    private Point GetRandomPoint(Random random, int x, int y, int indexX, int indexY)
-    {
-        int ranX;
-        int ranY;
-        int ranT;
-        do
+        var queryMine = from Square sq in squares
+                        where sq.IsMine()
+                        select sq;
+
+        foreach(Square sq in queryMine)
         {
-            ranT = random.Next(y * squares.GetLength(0) + x, squares.GetLength(0) * squares.GetLength(1) - 1);
-            ranX = ranT % squares.GetLength(0);
-            ranY = ranT / squares.GetLength(0);
-        } while(ranX >= indexX - 1 && ranX <= indexX + 1 && ranY >= indexY - 1 && ranY <= indexY + 1);
-
-        return new Point(ranX, ranY);
+            List<Square> lstAroundSquare = sq.GetAroundSquare(squares, true);
+            foreach(Square sqAround in lstAroundSquare)
+            {
+                sqAround.Value += 1;
+                gameFrame.DrawSquare(sqAround);
+            }
+        }
     }
-    ```
+```
 
+```csharp The function to get random point
+private Point GetRandomPoint(Random random, int x, int y, int indexX, int indexY)
+{
+    int ranX;
+    int ranY;
+    int ranT;
+    do
+    {
+        ranT = random.Next(y * squares.GetLength(0) + x, squares.GetLength(0) * squares.GetLength(1) - 1);
+        ranX = ranT % squares.GetLength(0);
+        ranY = ranT / squares.GetLength(0);
+    } while(ranX >= indexX - 1 && ranX <= indexX + 1 && ranY >= indexY - 1 && ranY <= indexY + 1);
+
+    return new Point(ranX, ranY);
+}
+```
+>You can find more introduce for this algorithm [**here**](https://cloud.tencent.com/developer/article/1462951)
 
 ## ThreadTimer function
 
-Also, in my game I need a timer to record my grades. And change the time on the panel every seconds. 
+Also, in my game I need a timer to record my scores, and the time should be changed every seconds in the frontend interface. In winForm application there are three methods to create a timer, here I use the `System.Threading.Timer`, as it create a different thread from the main tread, so it's the most accurate timer comparing to the other two methods. 
 
 ```csharp When create a new game
 if(threadTimer != null)
@@ -371,7 +393,15 @@ if(threadTimer != null)
 threadTimer = new System.Threading.Timer(new TimerCallback(ChangeTime), null, Timeout.Infinite, 1000);
 ```
 
+>Function `new System.Threading.Timer(new TimerCallback(ChangeTime), null, Timeout.Infinite, 1000)` create a new instance of Timer object.
+>The parameter `new TimerCallback(ChangeTime)` is the function (in this case `ChangeTime`) raised every interval time. 
+>The parameter `null` is your parameter of your raised function. In my function I have no parameter to parse, so it's null.
+>The parameter `Timeout.Infinite` is the start time of your timer function. If you want to start the timer right now, you can set it to 0.
+>The last parameter is the interval of timer. In my case it's 1000 mille seconds.
+
 ```csharp
+public delegate void MyInvoke();
+
 private void ChangeTime(object value)
 {
     if(!game.Result.HasValue)
@@ -391,8 +421,13 @@ private void ChangeTime(object value)
 }
 ```
 
-## Save my grades when breaking records
-To save my grades (I can see it when reopening my game), I use the property of userSetting. It is different from appSetting. AppSetting cannot be modified in the program, but userSetting you can change it or load it in your program.
+>To note that, as the timer uses a different thread from the main thread, If you want to call/raise the controls in your main thread in this timer function, you need to create another Invoke and use your main thread's controls in this Invoke, otherwise the program will raise an error.
+
+
+## Save my score when breaking records
+To save my scores, I use the property of userSetting. The differences between userSetting and appSetting is that appSetting cannot be modified in the program, but with userSetting you can change it or load it in your program.
+
+You need to define your all setting properties in your setting.cs file.
 
 ```csharp 
 private void SetNewRecords()
@@ -416,6 +451,12 @@ private void SetNewRecords()
     MessageBox.Show("You have break a new records: " + game.TimeRecord);
 }
 ```
+>To load your setting property : 
+>`game.TimeRecord = Properties.Settings.Default["InterRecord"]`
+>To save your setting property : 
+>`Properties.Settings.Default["InterRecord"] = game.TimeRecord;` 
+>`Properties.Settings.Default.Save();`
+
 
 # Conclusion
-This is my first game developed by C# winForm. At first I think that it's easy to develop, but in fact I was still meet some difficulties and it took me about two weeks to finish it. In the next time I would like to note the process to create the install package for this small application and make it possible to install in any computer.
+This is my first game developed by C# winForm. At first I think that it's easy to develop, but in fact I still met some difficulties and it took me about two weeks to finish it. Maybe in the future I would add some another features like music and animation effect to my application.
