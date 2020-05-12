@@ -6,11 +6,10 @@ toc: true
 
 thumbnail: /thumbnails/imgDefault.jpg
 tags: 
-    - tagToDefine
+    - C#
 categories:
-    - catToDefine
-
-update: {{ date }}
+    - Develop
+    
 ---
 
 Foreword text
