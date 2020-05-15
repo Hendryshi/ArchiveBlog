@@ -37,7 +37,7 @@ To insert the image in your blog, put the image file in the image folder
 ### Run server
 
 ``` bash
-$ hexo server --draft
+$ hexo s --draft
 ```
 
 That will allow you to preview your blog including draft post in local website: http://localhost:4000/
