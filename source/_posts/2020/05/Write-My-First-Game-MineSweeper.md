@@ -424,6 +424,20 @@ private void ChangeTime(object value)
 >To note that, as the timer uses a different thread from the main thread, If you want to call/raise the controls in your main thread in this timer function, you need to create another Invoke and use your main thread's controls in this Invoke, otherwise the program will raise an error.
 
 
+## Fix and center my form size
+
+```Csharp
+    this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+    this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+    this.MaximizeBox = false;
+```
+
+{% raw %}<article class="message is-info"><div class="message-body">{% endraw %}
+**Note**: 
+
+This code should be put in Form.Designer.cs
+{% raw %}</div></article>{% endraw %}
+
 ## Save my score when breaking records
 To save my scores, I use the property of userSetting. The differences between userSetting and appSetting is that appSetting cannot be modified in the program, but with userSetting you can change it or load it in your program.
 
