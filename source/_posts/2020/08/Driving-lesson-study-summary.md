@@ -1,0 +1,44 @@
+---
+title: Driving Lesson Study Summary
+permalink: Driving-lesson-study-summary
+toc: true
+thumbnail: /2020/08/22/Driving-lesson-study-summary/drivingTitle.jpg
+tags:
+  - Driving
+  - Life
+categories:
+  - Life
+  - Driving lesson
+date: 2020-08-22 19:43:17
+update: 2020-08-22 19:43:17
+---
+
+I will write my summary of each driving lesson here. Continue updating...
+
+<!-- more -->
+
+## **Lesson 3 - 08/11/2020**
+-   需要降档的情况（3档）：转弯前，遇到下坡路，前方有红绿灯。
+-   当你在35码的时候，你想要降到30码，你并不需要通过踩刹车来刹车，你可以直接降档来减 (减轻刹车的压力) 
+-   如果你的速度超过35码，你可以轻轻踩刹车，然后换挡（3-2），之后不能直接松离合，需要一直兹着离合直到速度降下来。如果发现路况转好可以加速，你可以松开刹车，并且踩油门加速
+-   缓缓起步：tenir plus sur l'embrayage。离合松的的少一点，油门踩的轻一点。
+
+
+## **Lesson 2 - 08/07/2020**
+
+-   降档(retrograder)的时候不用踩刹车
+-   6档降到5档 85km/h，5档到4档 50km/h
+-   在进入圆环之前，需要将速度降到30码，然后退到2档。慢慢的松离合，不用踩刹车，在进入圆环之后，需要把速度控制在20-25km/h
+-   刹车的时候，先踩刹车，最后再踩离合，停下车后再挂入1档
+-   在高速公路，路过缓速带，过路口，不用踩刹车，只需要松开油门，注意观察即可
+
+## **Lesson 1 - 08/04/2020**
+
+-   起步要先踩油门，然后再松离合器，离合器要一直兹着不放，等车起步了再把离合器全部松掉。(bloquer/tenir l'embrayage)
+-   第一档(ralenti moteur) 8km/h; 第二档 16km/h; 第三档 27km/h
+-   刹车需要stable， 先松油门，然后慢踩刹车，最后实在不行了再踩离合，过程中不能送刹车。停下的时候需要能够完全看到前车的轮子。
+-   转弯的时候需要pousser方向盘，不能tirer。往左转要让左手放到方向盘的12点钟方向，然后向左推方向盘。右转同理用右手推。
+
+
+
+

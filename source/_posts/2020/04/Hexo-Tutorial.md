@@ -34,6 +34,9 @@ To insert the cover image in your blog, change the image path to `/yyyy/mm/dd/po
 Write the article after `< !-- more -- >`. 
 To insert the image in your blog, put the image file in the image folder
 
+-   Insert image: `![](your image.png)`
+
+
 ### Run server
 
 ``` bash
@@ -75,6 +78,7 @@ $ git push origin Hexo
 ### Deploy to remote sites 
 
 ``` bash
+$ git checkout master
 $ hexo d
 ```
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
