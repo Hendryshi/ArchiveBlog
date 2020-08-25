@@ -78,7 +78,6 @@ $ git push origin Hexo
 ### Deploy to remote sites 
 
 ``` bash
-$ git checkout master
 $ hexo d
 ```
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
