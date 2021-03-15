@@ -1,7 +1,7 @@
 ---
 title: Chrome new cookie attribute SameSite
-permalink: Chrome-new-cookie-attribute-SameSite
 toc: true
+cover: /2020/08/15/Chrome-new-cookie-attribute-SameSite/SameSite title.jpg
 thumbnail: /2020/08/15/Chrome-new-cookie-attribute-SameSite/SameSite title.jpg
 tags:
   - JavaEE

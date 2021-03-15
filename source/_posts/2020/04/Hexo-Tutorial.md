@@ -1,8 +1,7 @@
 ---
 title: Hexo Tutorial
-permalink: Hexo-Tutorial
 toc: true
-
+cover: /2020/04/04/Hexo-Tutorial/cover.png
 thumbnail: /2020/04/04/Hexo-Tutorial/cover.png
 categories:
   - Tutorial

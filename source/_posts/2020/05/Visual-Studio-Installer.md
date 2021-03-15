@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Installer Project
-permalink: Visual-Studio-Installer
 toc: true
+cover: /2020/05/17/Visual-Studio-Installer/cover.png
 thumbnail: /2020/05/17/Visual-Studio-Installer/cover.png
 tags:
   - Visual Studio

@@ -1,7 +1,7 @@
 ---
 title: 'Write My First Game: MineSweeper'
-permalink: 'Write-My-First-Game-MineSweeper'
 toc: true
+cover: /2020/05/01/Write-My-First-Game-MineSweeper/cover.png
 thumbnail: /2020/05/01/Write-My-First-Game-MineSweeper/cover.png
 tags:
     - C#

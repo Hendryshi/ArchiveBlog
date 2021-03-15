@@ -1,7 +1,7 @@
 ---
 title: Driving Lesson Study Summary
-permalink: Driving-lesson-study-summary
 toc: true
+cover: /2020/08/22/Driving-lesson-study-summary/drivingTitle.jpg
 thumbnail: /2020/08/22/Driving-lesson-study-summary/drivingTitle.jpg
 tags:
   - Driving

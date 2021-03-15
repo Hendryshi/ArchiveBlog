@@ -1,8 +1,7 @@
 ---
 title: Some tips when using GROUP BY in SQL Server
-permalink: SQL-Server-Study-GROUPBY
 toc: true
-thumbnail: /2020/05/12/SQL-Server-Study-GROUPBY/cover.png
+
 tags:
   - SQL
 categories:
@@ -14,9 +13,7 @@ update: 2020-05-12 22:05:07
 ---
 
 
-In this article I would like to present some tips when using the GROUP BY to generate a report in SQL server.
-
-<!-- more -->
+Present some tips when using the GROUP BY to generate a report in SQL server.
 
 ## Using ROLLUP
 
@@ -43,6 +40,8 @@ If you group by two different criterion, the result will give you the subtotal a
     FROM sales.sales_summary
     GROUP BY ROLLUP(category, brand)
 ```
+
+<!-- more -->
 
 Results:
 

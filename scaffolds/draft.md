@@ -1,9 +1,8 @@
 ---
 title: {{ title }}
-permalink: {{ title }}
 date: {{ date }}
 toc: true
-
+cover: /thumbnails/imgDefault.jpg
 thumbnail: /thumbnails/imgDefault.jpg
 tags: 
     - C#
