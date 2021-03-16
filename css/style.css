@@ -10814,13 +10814,29 @@ article.media .media-content .title {
   margin: 0;
   line-height: inherit;
 }
+article.article {
+  padding: 1.5rem 1.8rem;
+}
+article.article .title {
+  margin: 0 0 0.5rem -0.1rem !important;
+}
+article.article .title .fas {
+  margin-right: 0.5rem;
+}
 article.article .article-meta,
 article.article .article-tags {
   color: #7a7a7a;
 }
 article.article .article-meta {
   overflow-x: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem !important;
+}
+article.article .article-meta >:first-child {
+  flex-wrap: wrap;
+  width: 100%;
+}
+article.article .article-meta >:first-child >* {
+  flex-grow: 0 !important;
 }
 article.article .content {
   word-wrap: break-word;
@@ -10954,6 +10970,39 @@ a.article-nav-next span {
   flex-shrink: 1;
   word-wrap: break-word;
   white-space: normal;
+}
+.has-link-black-ter {
+  transition: 0.2s ease;
+}
+.has-link-black-ter:hover {
+  color: #3273dc !important;
+}
+.has-link-black-ter {
+  color: #242424 !important;
+}
+.article {
+  counter-reset: section;
+}
+.article h2 {
+  counter-reset: sub-section;
+}
+.article h3 {
+  counter-reset: composite;
+}
+.article h4 {
+  counter-reset: detail;
+}
+.article h2:before {
+  content: counter(section) " ";
+  counter-increment: section;
+}
+.article h3:before {
+  content: counter(section) "." counter(sub-section) " ";
+  counter-increment: sub-section;
+}
+.article h4:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+  counter-increment: composite;
 }
 .navbar-main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -11388,6 +11437,10 @@ figure.highlight .section {
 .level.is-multiline {
   flex-wrap: wrap;
 }
+#toc {
+  max-height: calc(100vh - 22px);
+  overflow-y: scroll;
+}
 .donate {
   position: relative;
 }
@@ -11641,6 +11694,10 @@ figure.highlight .section {
   background-color: #276cda;
 }
 @media screen and (min-width: 1280px) {
+  .is-3-column .container {
+    max-width: 1216px;
+    width: 1216px;
+  }
   .is-1-column .container,
   .is-2-column .container {
     max-width: 960px;
@@ -11665,6 +11722,10 @@ figure.highlight .section {
   }
 }
 @media screen and (min-width: 1728px) {
+  .is-3-column .container {
+    max-width: 1600px;
+    width: 1600px;
+  }
   .is-2-column .container {
     max-width: 1152px;
     width: 1152px;
