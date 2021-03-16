@@ -1,19 +1,19 @@
 ---
 title: Hexo Tutorial
 toc: true
-cover: /2020/04/04/Hexo-Tutorial/cover.png
 thumbnail: /2020/04/04/Hexo-Tutorial/cover.png
 categories:
-  - Tutorial
+  - Hexo
 tags:
   - Hexo
+  - Blog
 
 date: 2020-04-04
 update: 2020-05-12
 ---
 
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
-<!-- more -->
+
 
 ## Workflow
 
@@ -35,6 +35,7 @@ To insert the image in your blog, put the image file in the image folder
 
 -   Insert image: `![](your image.png)`
 
+<!-- more -->
 
 ### Run server
 

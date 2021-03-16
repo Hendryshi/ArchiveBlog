@@ -1,19 +1,16 @@
 ---
 title: Some tips when using GROUP BY in SQL Server
 toc: true
+thumbnail: /2020/05/12/SQL-Server-Study-GROUPBY/cover.png
 
 tags:
-  - SQL
+  - SQL Server
 categories:
-  - Develop
   - SQL
 
 date: 2020-05-12 22:05:07
 update: 2020-05-12 22:05:07
 ---
-
-
-Present some tips when using the GROUP BY to generate a report in SQL server.
 
 ## Using ROLLUP
 
@@ -28,6 +25,7 @@ See example below:
     WHERE R.isActive = 1 AND CM.isActive = 1
     GROUP BY ROLLUP (R.nameNode)
 ```
+<!-- more -->
 
 Results:
 
@@ -41,7 +39,7 @@ If you group by two different criterion, the result will give you the subtotal a
     GROUP BY ROLLUP(category, brand)
 ```
 
-<!-- more -->
+
 
 Results:
 

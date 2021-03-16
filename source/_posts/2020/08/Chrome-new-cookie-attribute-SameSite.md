@@ -1,31 +1,29 @@
 ---
 title: Chrome new cookie attribute SameSite
 toc: true
-cover: /2020/08/15/Chrome-new-cookie-attribute-SameSite/SameSite title.jpg
 thumbnail: /2020/08/15/Chrome-new-cookie-attribute-SameSite/SameSite title.jpg
 tags:
   - JavaEE
-  - Http
-categories:
-  - Develop
   - Apache
   - Chrome
+categories:
+  - JAVA
+
 date: 2020-08-15 19:42:08
 update: 2020-08-15 19:42:08
 ---
 
 
-Introduce of chrome's new cookie attribute "SameSite = none" after their upgrade of version 80.
-
-<!-- more -->
+About chrome's new version 80: Cookie attribute "SameSite = none"
 
 ## **Context**
 Recently we met a strange problem in our program: when users finished payment in site A and went back to site B, the cookie of site B was lost. While the site B use a anti-CSRF that always linked to a cookie. the user found an error message in the page said that "Cannot validate CSRF because your session is lost".
 
-![](cookie-error.png)
+![](/2020/08/15/Chrome-new-cookie-attribute-SameSite/cookie-error.png)
 
 After investigating this problem, we found that the chrome introduced a new cookie attribute "SameSite = None" after their upgrade of version 80 that will block the cookie if it's a cross-site request.
 
+<!-- more -->
 
 ## **Introduction**
 

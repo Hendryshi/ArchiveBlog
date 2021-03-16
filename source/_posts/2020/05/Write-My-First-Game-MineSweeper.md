@@ -1,26 +1,26 @@
 ---
 title: 'Write My First Game: MineSweeper'
 toc: true
-cover: /2020/05/01/Write-My-First-Game-MineSweeper/cover.png
 thumbnail: /2020/05/01/Write-My-First-Game-MineSweeper/cover.png
 tags:
     - C#
     - WinForm
 categories:
-    - Develop
-    - Project
+    - .NET
 
 date: 2020-05-01 00:00:00
 update: 2020-05-02 00:00:00
 ---
 
 This is my first game developed by C# WinForm platform. The initial object is to practice my C# level. So the first game jump into my mind is "MineSweeper". It is enough simple and interesting. In this post I will list my conception and some difficult point during my development.
-<!-- more -->
+
 
 **To see my [MineSweeper project](https://github.com/Hendryshi/MineSweeper) in github.**
 
 **See also [the rule for mineSweeper](http://www.freeminesweeper.org/help/minehelpinstructions.html)**
 
+
+<!-- more -->
 
 # Class Conception
 

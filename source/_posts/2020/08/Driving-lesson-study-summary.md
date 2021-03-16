@@ -1,19 +1,17 @@
 ---
 title: Driving Lesson Study Summary
 toc: true
-cover: /2020/08/22/Driving-lesson-study-summary/drivingTitle.jpg
 thumbnail: /2020/08/22/Driving-lesson-study-summary/drivingTitle.jpg
 tags:
   - Driving
   - Life
 categories:
   - Life
-  - Driving lesson
 date: 2020-08-22 19:43:17
 update: 2020-08-22 19:43:17
 ---
 
-I will write my summary of each driving lesson here. Continue updating...
+This blog records of all my summary of driving lesson in France. Continue updating...
 
 <!-- more -->
 

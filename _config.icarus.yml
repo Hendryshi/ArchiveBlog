@@ -47,7 +47,7 @@ article:
         theme: atom-one-light
         clipboard: true
         fold: unfolded
-    readtime: false
+    readtime: true
 search:
     type: insight
 
@@ -61,8 +61,8 @@ widgets:
         position: left
         type: profile
         author: YEJIA SHI
-        author_title: Just thinking and writing
-        location: France
+        author_title: hendryshi@163.com
+        location: Paris, France
         avatar: /img/profile.png
         avatar_rounded: true
         gravatar: 
@@ -103,7 +103,7 @@ plugins:
     back_to_top: true
     baidu_analytics:
         tracking_id: 
-    busuanzi: false
+    busuanzi: true
     cnzz:
         id: 
         web_id: 

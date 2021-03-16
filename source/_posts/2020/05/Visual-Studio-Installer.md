@@ -1,23 +1,21 @@
 ---
-title: Visual Studio Installer Project
+title: Generate a SetUp.exe file in Winform application
 toc: true
-cover: /2020/05/17/Visual-Studio-Installer/cover.png
 thumbnail: /2020/05/17/Visual-Studio-Installer/cover.png
 tags:
   - Visual Studio
 categories:
-  - Tutorial
+  - .NET
 date: 2020-05-17 12:19:00
 update: 2020-05-17 12:19:00
 ---
 
 
-In this article I would like to present how to generate a SetUp.exe file for your Winform application.
-<!-- more -->
-
 ## Create a Setup Project for your application
 
 When you are sure that have finished your development for your application (Winform application in my case). You can right click your Solution in `Solution Explorer`, then click `Add new project`. In the windows came out, search `Installer`. then choose `Setup Project` And create it.
+
+<!-- more -->
 
 ![](SetUpProject.png)
 

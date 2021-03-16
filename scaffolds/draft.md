@@ -2,12 +2,11 @@
 title: {{ title }}
 date: {{ date }}
 toc: true
-cover: /thumbnails/imgDefault.jpg
-thumbnail: /thumbnails/imgDefault.jpg
+thumbnail: /img/favicon.svg
 tags: 
     - C#
 categories:
-    - Develop
+    - .NET
     
 ---
 
