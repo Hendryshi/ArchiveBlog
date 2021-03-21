@@ -6,7 +6,7 @@ tags:
   - Driving
   - Life
 categories:
-  - Life
+  - LIFE
 date: 2020-08-22 19:43:17
 update: 2020-08-22 19:43:17
 ---

@@ -3,11 +3,11 @@ title: {{ title }}
 date: {{ date }}
 toc: true
 thumbnail: /img/favicon.svg
-tags: 
-    - C#
 categories:
     - .NET
-    
+tags: 
+    - C#
+
 ---
 
 Foreword text

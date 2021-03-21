@@ -3,7 +3,7 @@ title: Hexo Tutorial
 toc: true
 thumbnail: /2020/04/04/Hexo-Tutorial/cover.png
 categories:
-  - Hexo
+  - HEXO
 tags:
   - Hexo
   - Blog
