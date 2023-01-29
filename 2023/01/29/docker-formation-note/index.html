@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Docker Formation Notes - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="I took part in a formation for docker technology last week. Here I will list the notes I take during the formation. De la virtualisation à docker“Build, Ship, and Run Any App, Anywhere”, docker est un"><meta property="og:type" content="blog"><meta property="og:title" content="Docker Formation Notes"><meta property="og:url" content="http://yoursite.com/2023/01/29/docker-formation-note/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="I took part in a formation for docker technology last week. Here I will list the notes I take during the formation. De la virtualisation à docker“Build, Ship, and Run Any App, Anywhere”, docker est un"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/2023/01/29/docker-formation-note/title.png"><meta property="article:published_time" content="2023-01-29T11:23:57.000Z"><meta property="article:modified_time" content="2023-01-29T11:36:58.298Z"><meta property="article:author" content="Yejia SHI"><meta property="article:tag" content="Docker"><meta property="article:tag" content="Français"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/2023/01/29/docker-formation-note/title.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2023/01/29/docker-formation-note/"},"headline":"Docker Formation Notes","image":["http://yoursite.com/2023/01/29/docker-formation-note/title.png"],"datePublished":"2023-01-29T11:23:57.000Z","dateModified":"2023-01-29T11:36:58.298Z","author":{"@type":"Person","name":"Yejia SHI"},"description":"I took part in a formation for docker technology last week. Here I will list the notes I take during the formation. De la virtualisation à docker“Build, Ship, and Run Any App, Anywhere”, docker est un"}</script><link rel="canonical" href="http://yoursite.com/2023/01/29/docker-formation-note/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Hendryshi/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>Docker Formation Notes</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="${date_xml(page.date)}" title="${date_xml(page.date)}">2023-01-29</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="${date_xml(page.updated)}" title="${date_xml(page.updated)}">2023-01-29</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/Tech/">Tech</a></span><span class="level-item"><i class="far fa-clock"></i> 11 minutes read (About 1660 words)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><div class="content"><p>I took part in a formation for docker technology last week. Here I will list the notes I take during the formation.</p>
+<h2 id="De-la-virtualisation-a-docker"><a href="#De-la-virtualisation-a-docker" class="headerlink" title="De la virtualisation à docker"></a>De la virtualisation à docker</h2><p>“Build, Ship, and Run Any App, Anywhere”, docker est un outil de packaging, pour résoudre le problème: Environnements différents, Librairies manquantes, Versions logicielles différentes</p>
+<div class="notification is-info">
+<p> =&gt; De la nécessité d’avoir des environnements d’exécution identiques</p>
+</div>
+
+ <span id="more"></span>
+
+<h3 id="Differents-types-de-virtualisation"><a href="#Differents-types-de-virtualisation" class="headerlink" title="Différents types de virtualisation"></a>Différents types de virtualisation</h3><ul>
+<li>Scripts  d’installation automatisée<ul>
+<li>Ansible</li>
+<li>D: il faut temps en temps faire un reset</li>
+</ul>
+</li>
+<li>Machines virtuelles<ul>
+<li>Linux, Windows</li>
+<li>A: Il y a plus de chose dedans: système d’exploitation<ul>
+<li>Peut déployer plusieurs applications dans le même VM</li>
+<li>pratique pour tester des logiciels</li>
+</ul>
+</li>
+<li>D: Consommer beaucoup de ressources <ul>
+<li>Lent</li>
+<li>Tâches répétitives</li>
+<li>Configuration manuelle</li>
+<li>Dur d’apporter de la scalabilité</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Conteneurs<ul>
+<li>Partager un même noyau de linux (le noyau le plus bas)</li>
+<li>Image embarque l’application et dépendances</li>
+<li>Configuration est portée par l’image</li>
+<li>A: Beaucoup plus léger que le VM<ul>
+<li>Meilleur performances</li>
+<li>Plus simple à déployer</li>
+<li>Facilité de configuration/stop/redémarrer/Reproductibilité</li>
+</ul>
+</li>
+<li>D: Toutes les applications ne peuvent pas tourner dans un conteneur<ul>
+<li>Faire confiance aux images téléchargées</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="La-Conteneurisation"><a href="#La-Conteneurisation" class="headerlink" title="La Conteneurisation"></a>La Conteneurisation</h3><ul>
+<li>Fonctions Kernel: Namespaces<ul>
+<li>mnt (montage): <code>docker run --v hostpath:dockerpath</code><ul>
+<li>The volumn share the same directory</li>
+</ul>
+</li>
+<li>pid(processus)</li>
+<li>net(réseau)</li>
+<li>ipc(communication inter processus)</li>
+<li>uts(hostnames)</li>
+<li>user(UIDs)</li>
+</ul>
+</li>
+<li>Cgroups<ul>
+<li>Limitation des ressources: CPU, RAM</li>
+<li>Priorisation: ressources processeur, I/O</li>
+<li>Comptabilité: quantité de ressources consommées</li>
+<li>Isolation: séparation par espace de nommage pour les groups</li>
+</ul>
+</li>
+</ul>
+<h3 id="Le-positionnement-de-docker"><a href="#Le-positionnement-de-docker" class="headerlink" title="Le positionnement de docker"></a>Le positionnement de docker</h3><ul>
+<li>Docker ne remplace pas les conteneur, il les utilise s’il existes dans le cache</li>
+<li>Registre d’image: <a target="_blank" rel="noopener" href="https://hub.docker.com/search">https://hub.docker.com/search</a></li>
+</ul>
+<h3 id="Des-outils-pour-developpeurs"><a href="#Des-outils-pour-developpeurs" class="headerlink" title="Des outils pour développeurs"></a>Des outils pour développeurs</h3><ul>
+<li>Docker avant le compilation, ensuite compiler dans un docker =&gt; enchainer dans le deuxième docker pour fabriquer le containeur</li>
+<li>Choix de version de compilateurs/Système</li>
+</ul>
+<h2 id="L’architecture-de-docker"><a href="#L’architecture-de-docker" class="headerlink" title="L’architecture de docker"></a>L’architecture de docker</h2><p><img src="dockerArcht.png" alt="Architecture"></p>
+<ul>
+<li><p>Le client</p>
+<ul>
+<li>docker [OPTIONS] COMMAND [ARG…]<br>docker [ –help | -v | –version ]</li>
+</ul>
+</li>
+<li><p>Le daemon (serveur)</p>
+<ul>
+<li><em>On peut configurer le hostname pour manager le docker dans autre machine</em>, sinon il prends localhost</li>
+</ul>
+</li>
+<li><p>Docker Hub (dépots d’images)</p>
+<ul>
+<li>Il faut mieux de créer son registry privée (https + login + password)</li>
+</ul>
+</li>
+<li><p>Fichier de configuration: Situé à ~/.docker/config.json</p>
+</li>
+</ul>
+<h2 id="Les-commandes-essentielles"><a href="#Les-commandes-essentielles" class="headerlink" title="Les commandes essentielles"></a>Les commandes essentielles</h2><h3 id="Docker-commande"><a href="#Docker-commande" class="headerlink" title="Docker commande"></a>Docker commande</h3><ul>
+<li>Docker run<ul>
+<li>docker run =&gt; docker pull (télécharger l’image) + docker create (crée le conteneur) + docker start (lancer le conteneur)</li>
+</ul>
+</li>
+<li>Lister les images<ul>
+<li><code>docker image ls / docker images</code></li>
+</ul>
+</li>
+<li>Lister les conteneurs<ul>
+<li><code>docker ps / docker container ls</code></li>
+<li><code>docker ps -a</code>  =&gt; lister tous (actifs et arrêtés)</li>
+</ul>
+</li>
+<li>Lister les logs d’un conteneur<ul>
+<li><code>docker logs container_name</code></li>
+</ul>
+</li>
+<li>Inspecter un conteneur<ul>
+<li><code>docker inspect container_name</code></li>
+</ul>
+</li>
+<li>Démarrer un conteneur<ul>
+<li><code>docker start --**attach** container_name</code> <ul>
+<li>attach: bloquer le shell de l’host</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Arrêter/tuer/supprimer un conteneur<ul>
+<li><code>docker stop container_name</code></li>
+<li><code>docker kill container_name</code></li>
+<li><code>docker rm container_name</code></li>
+</ul>
+</li>
+<li>Supprimer conteneur après qu’il ait terminé<ul>
+<li><code>docker run --**rm** image_name</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Docker-Hub"><a href="#Docker-Hub" class="headerlink" title="Docker Hub"></a>Docker Hub</h3><ul>
+<li>Registre publique des images officielles fournies par Docker</li>
+<li>Fournit des services supplémentaires aux utilisateurs connectés<ul>
+<li>Gestion de repositories, publiques ou privés</li>
+<li>Build automatique d’images depuis un dépôt Git</li>
+</ul>
+</li>
+<li>Rechercher: <code>docker search key_word</code></li>
+<li>Télécharger: docker <code>pull private_sitename/image_name:tagversion</code></li>
+</ul>
+<h3 id="Espace-de-stockage"><a href="#Espace-de-stockage" class="headerlink" title="Espace de stockage"></a>Espace de stockage</h3><p>2 options pour spécifier points de montage dans le conteneurs: volumns/bind mouts</p>
+<h4 id="Volumn"><a href="#Volumn" class="headerlink" title="Volumn"></a>Volumn</h4><ul>
+<li>Stocké sur le filesystem hôte : /var/lib/docker/volumes</li>
+<li>Gérés par <code>docker volume</code></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># Créer un volume nommé &quot;myvol&quot;</span></span><br><span class="line">$ docker volume create myvol</span><br><span class="line">$ <span class="comment"># Créer un volume nommé par Docker</span></span><br><span class="line">$ docker volume create</span><br><span class="line">$ <span class="comment"># Lister tous les volumes</span></span><br><span class="line">$ docker volume ls</span><br><span class="line">DRIVER VOLUME NAME</span><br><span class="line"><span class="built_in">local</span> a50e5c5512afb75eba405436f3e9cf26eb318dbb71e3df8436ca050a</span><br><span class="line"><span class="built_in">local</span> myvol</span><br><span class="line">$ <span class="comment"># Supprimer un volume</span></span><br><span class="line">$ docker volume rm myvol</span><br><span class="line">mystorage</span><br><span class="line">$ <span class="comment"># Supprimer tous les volumes non utilisés</span></span><br><span class="line">$ docker volume prune</span><br><span class="line">WARNING! This will remove all <span class="built_in">local</span> volumes not used by at least one contain</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span>? [y/N] y</span><br><span class="line">Deleted Volumes:</span><br><span class="line">a50e5c5512afb75eba405436f3e9cf26eb318dbb71e3df8436ca050ad765f346</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Montage: <ul>
+<li><code>docker run -v myvol:/data</code></li>
+<li><code>docker run --mount &#39;source=myvol,target=/data&#39;</code></li>
+<li>Si myvol existe pas, crée automatiquement</li>
+</ul>
+</li>
+</ul>
+<h4 id="Bind-mount"><a href="#Bind-mount" class="headerlink" title="Bind mount"></a>Bind mount</h4><ul>
+<li>Dossier quelconque du filesystem hôte</li>
+<li>Non géré par Docker, peut donner accès à des fichiers sensibles</li>
+<li>Montage:<ul>
+<li><code>docker run -v /home/toto:/data</code></li>
+<li><code>docker run --mount &#39;type=bind,source=/home/toto, target=/data&#39;</code></li>
+<li>Source doit exister</li>
+</ul>
+</li>
+</ul>
+<h4 id="Le-commande-cp"><a href="#Le-commande-cp" class="headerlink" title="Le commande cp"></a>Le commande cp</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</span><br><span class="line">docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Exemple avec arguments -<ul>
+<li><code>docker cp dbstore:/dbdata -&gt; dbdata.tar</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Networks"><a href="#Networks" class="headerlink" title="Networks"></a>Networks</h3><p><img src="dockerNetwork.png" alt="network"></p>
+<h4 id="Publier-le-port"><a href="#Publier-le-port" class="headerlink" title="Publier le port:"></a>Publier le port:</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># Lancement du serveur nginx</span></span><br><span class="line">$ docker run \</span><br><span class="line">--name some-nginx \</span><br><span class="line">-v $(<span class="built_in">pwd</span>):/usr/share/nginx/html:ro \</span><br><span class="line">-d \</span><br><span class="line">--publish 1234:80 \</span><br><span class="line">nginx</span><br><span class="line">$ <span class="comment"># Mapping visible dans la liste des conteneurs</span></span><br><span class="line">$ docker ps</span><br><span class="line">CONTAINER ID IMAGE … PORTS NAMES</span><br><span class="line">2fa02eb3c662 nginx … 0.0.0.0:1234-&gt;80/tcp some-nginx</span><br><span class="line">$ <span class="comment"># Lancement d’une requête vers le serveur</span></span><br><span class="line">$ curl -I http://localhost:1234</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.15.8</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-type-de-reseaux"><a href="#3-type-de-reseaux" class="headerlink" title="3 type de réseaux"></a>3 type de réseaux</h4><ul>
+<li>Bridge: driver par défaut</li>
+<li>host: permet accès direct aux interface réseau de l’hôte</li>
+<li>none (pour empêche l’accès au réseau)</li>
+</ul>
+<h5 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h5><ul>
+<li>Permet l’accès à l’extérieur de l’hôte</li>
+<li>Les conteneurs peuvent communiquer entre eux via ce réseaur, mieux éviter de tout brancher sur bridge</li>
+<li>Utiliser un réseau bridge spécifique<ul>
+<li>docker network create mynet</li>
+<li>docker run –name mycontainer –network mynet</li>
+</ul>
+</li>
+<li>Tous les conteneurs branché sur <strong>mynet</strong> se voient</li>
+</ul>
+<h2 id="Creation-de-conteneurs-personnalises"><a href="#Creation-de-conteneurs-personnalises" class="headerlink" title="Création de conteneurs personnalisés"></a>Création de conteneurs personnalisés</h2><h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><ul>
+<li>FROM : précise l’image de départ</li>
+<li>LABEL : annote l’image</li>
+<li>RUN : exécute une commande pour modifier l’image</li>
+<li>EXPOSE : définit un port utilisé par le conteneur</li>
+<li>ENV : positionne une variable d’environnement de l’image</li>
+<li>COPY et ADD : copient des fichiers/dossiers du hôte vers l’image</li>
+<li>CMD et ENTRYPOINT : définissent le programme lancé au</li>
+<li>démarrage du conteneur</li>
+<li>VOLUME : crée un dossier destiné à être monté sur FS hôte</li>
+<li>WORKDIR : positionne le dossier courant du build</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">18.13</span>.<span class="number">0</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> server.js ./</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash">  [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;server.js&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Construire-une-image"><a href="#Construire-une-image" class="headerlink" title="Construire une image"></a>Construire une image</h3><ul>
+<li><code>docker build -t myImage:tagversion</code> .</li>
+<li><code>docker image push registry-host:5000/myadmin/myImage:latest</code></li>
+</ul>
+<h3 id="Layers-et-image-cache"><a href="#Layers-et-image-cache" class="headerlink" title="Layers et image cache"></a>Layers et image cache</h3><ul>
+<li>Chaque instruction du Dockerfile crée une image intermédiarie</li>
+<li>Une image intermédiarie est mies en cache pour rebuild rapide</li>
+<li>Faut meux d’uiltiser 1 seule instruction RUN<ul>
+<li><code>RUN apt update &amp;&amp; apt install … &amp;&amp; rm -rf /var/lib/apt/lists/*</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ENTRYPOINT-et-CMD"><a href="#ENTRYPOINT-et-CMD" class="headerlink" title="ENTRYPOINT et CMD"></a>ENTRYPOINT et CMD</h3><h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><ul>
+<li><p>Définit la commande lancé par défaut au démarrage</p>
+</li>
+<li><pre><code class="dockerfile"><span class="keyword">FROM</span> alpine
+<span class="keyword">CMD</span> echo Hello
+&lt;!--code￼<span class="number">4</span>--&gt;</code></pre>
+</li>
+<li><p><code>docker build -t hello .</code></p>
+<p><code>docker run hello =&gt; Hello</code></p>
+<p><code>docker run --entrypoint echo Goodbye =&gt; Goodbye</code></p>
+</li>
+</ul>
+<h4 id="Exec-Form"><a href="#Exec-Form" class="headerlink" title="Exec Form"></a>Exec Form</h4><ul>
+<li><pre><code class="dockerfile"><span class="keyword">FROM</span> ALPINE
+<span class="keyword">CMD</span> ["echo", "Hello"]
+<span class="comment"># ou</span>
+<span class="keyword">ENTRYPOINT</span> ["echo", "Hello"]
+&lt;!--code￼<span class="number">5</span>--&gt;</code></pre>
+</li>
+<li><p><code>docker build -t hello .</code></p>
+</li>
+<li><p><code>docker run hello</code> =&gt; Hello World<br><code>docker run hello there</code> =&gt; Hello there</p>
+</li>
+</ul>
+<h3 id="Multi-stage-build"><a href="#Multi-stage-build" class="headerlink" title="Multi-stage build"></a>Multi-stage build</h3><ul>
+<li>Possibilité d’avoir plusieurs <strong>FROM</strong> dans un Dockerfile</li>
+<li>Chaque <strong>FROM</strong> commence un stage du build</li>
+<li>=&gt; 1 seul Dockerfile suffit pour compiler/empaqueter l’application</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-------------------------------------</span></span><br><span class="line"><span class="comment"># Étape de &quot;compilation&quot; de l’application</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine AS build</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> src /home</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /home</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> [<span class="string">&quot;javac&quot;</span>, <span class="string">&quot;Main.java&quot;</span>]</span></span><br><span class="line"><span class="comment">#-------------------------------------</span></span><br><span class="line"><span class="comment"># Étape de &quot;packaging&quot; de l’application</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jre-alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> --from=build /home/Main.class /Main.class</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [ <span class="string">&quot;java&quot;</span>, <span class="string">&quot;Main&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Mettre-en-oeuvre-une-application-multiconteneur"><a href="#Mettre-en-oeuvre-une-application-multiconteneur" class="headerlink" title="Mettre en oeuvre une application multiconteneur"></a>Mettre en oeuvre une application multiconteneur</h2><h3 id="Docker-compose"><a href="#Docker-compose" class="headerlink" title="Docker compose"></a>Docker compose</h3><ul>
+<li>Outil pour définir et lancer des applications multi-conteneurs</li>
+<li>1 ficher YAML pour définir tous les services</li>
+<li>Commandes pour composer et gérer l’application</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.2&quot;</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">datevol:</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">datelooper:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">alpine</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;datevol:/data&quot;</span></span><br><span class="line">  <span class="attr">command:</span> <span class="string">sh</span> <span class="string">-c</span> <span class="string">&#x27;while true; do</span></span><br><span class="line"><span class="string">      echo $$(date) &gt; /data/index.html;</span></span><br><span class="line"><span class="string">      sleep 1 ;</span></span><br><span class="line"><span class="string">    done&#x27;</span></span><br><span class="line"><span class="attr">dateserver:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">nginx:alpine</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">volume</span></span><br><span class="line">      <span class="attr">source:</span> <span class="string">datevol</span></span><br><span class="line">      <span class="attr">target:</span> <span class="string">/usr/share/nginx/html</span></span><br><span class="line">      <span class="attr">read_only:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;8081:80&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Start multi-composant: <code>docker-compose up</code></li>
+</ul>
+<h3 id="Commandes-de-compostion-utiles"><a href="#Commandes-de-compostion-utiles" class="headerlink" title="Commandes de compostion utiles"></a>Commandes de compostion utiles</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># Construire, créer et démarrer les conteneurs, en détaché</span></span><br><span class="line">$ docker-compose up -d</span><br><span class="line">$ <span class="comment"># Tester le docker-compose.yml (conteneurs créés tout de même)</span></span><br><span class="line">$ docker-compose up --no-start</span><br><span class="line">$ <span class="comment"># Arrêter et supprimer les conteneurs, networks,</span></span><br><span class="line">$ <span class="comment"># volumes, images créés par up</span></span><br><span class="line">$ docker-compose down</span><br><span class="line">$ <span class="comment"># Arrêter un service en particulier</span></span><br><span class="line">$ docker-compose stop datelooper</span><br><span class="line">$ <span class="comment"># Démarrer un service</span></span><br><span class="line">$ docker-compose start datelooper</span><br><span class="line">$ <span class="comment"># Suivre les logs (Ctrl + C pour arrêter)</span></span><br><span class="line">$ docker-compose logs -f</span><br><span class="line">$ <span class="comment"># Supprimer les conteneurs des services arrêtés</span></span><br><span class="line">$ docker-compose rm</span><br></pre></td></tr></table></figure>
+
+<h2 id="Administraters-des-conteneurs-en-production"><a href="#Administraters-des-conteneurs-en-production" class="headerlink" title="Administraters des conteneurs en production"></a>Administraters des conteneurs en production</h2><h3 id="Docker-Registry"><a href="#Docker-Registry" class="headerlink" title="Docker Registry"></a>Docker Registry</h3><ul>
+<li>Permet de stocker et distribuer images Docker “chez soi”</li>
+<li>Alternative à un accès privé Docker Hub</li>
+</ul>
+<p>Mise en place</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># Démarrer registry</span></span><br><span class="line">$ docker run -d -p 5000:5000 --name registry registry:2</span><br><span class="line">$ <span class="comment"># Tagguer une image pour qu’elle pointe sur le registre</span></span><br><span class="line">$ docker image tag my-image localhost:5000/my-image</span><br><span class="line">$ <span class="comment"># Envoyer l’image sur le registre</span></span><br><span class="line">$ docker push localhost:5000/my-image</span><br><span class="line">$ <span class="comment"># Récupérer l’image du registre</span></span><br><span class="line">$ docker pull localhost:5000/my-image</span><br></pre></td></tr></table></figure>
+
+<h3 id="Automatiser-le-demarrage-des-conteneurs"><a href="#Automatiser-le-demarrage-des-conteneurs" class="headerlink" title="Automatiser le démarrage des conteneurs"></a>Automatiser le démarrage des conteneurs</h3><ul>
+<li>Option –<strong>restart</strong> de docker run ou create</li>
+<li><strong>no</strong> par défaut</li>
+<li><strong>on-failure</strong>: redémarre en cas de plantage</li>
+<li><strong>always</strong>: redémarre toujours sauf si arrêt manuel</li>
+</ul>
+<h3 id="Gerer-l’affectation-des-ressources"><a href="#Gerer-l’affectation-des-ressources" class="headerlink" title="Gérer l’affectation des ressources"></a>Gérer l’affectation des ressources</h3><ul>
+<li>Limiter l’empreinte mémoire<ul>
+<li>Option -m, –memory=</li>
+</ul>
+</li>
+<li>Limiter le CPU<ul>
+<li><code>docker run --cpus=&quot;.5&quot; my-image</code></li>
+</ul>
+</li>
+<li>Gestion des logs<ul>
+<li><code>docker logs my-container</code></li>
+</ul>
+</li>
+<li>Configuration des logs<ul>
+<li>Utiliser des plugins pour écrire les logs<ul>
+<li><strong>none</strong> : désactiver les logs</li>
+<li><strong>syslog</strong> : utiliser le service syslog de l’hôte</li>
+<li><strong>awslog</strong> : envoyer les logs sur Amazon CloudWatch Logs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/Docker/">Docker, </a><a class="link-muted" rel="tag" href="/tags/Francais/">Français </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/08/15/Driving-lesson-study-summary-Automatical/"><span class="level-item">Driving Lesson Study Summary(Automatical)</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.png" alt="YEJIA SHI"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">YEJIA SHI</p><p class="is-size-6 is-block">hendryshi@163.com</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Paris, France</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">16</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Hendryshi" target="_blank" rel="noopener">Follow</a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#De-la-virtualisation-a-docker"><span class="level-left"><span class="level-item">1</span><span class="level-item">De la virtualisation à docker</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Differents-types-de-virtualisation"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Différents types de virtualisation</span></span></a></li><li><a class="level is-mobile" href="#La-Conteneurisation"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">La Conteneurisation</span></span></a></li><li><a class="level is-mobile" href="#Le-positionnement-de-docker"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Le positionnement de docker</span></span></a></li><li><a class="level is-mobile" href="#Des-outils-pour-developpeurs"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">Des outils pour développeurs</span></span></a></li></ul></li><li><a class="level is-mobile" href="#L’architecture-de-docker"><span class="level-left"><span class="level-item">2</span><span class="level-item">L’architecture de docker</span></span></a></li><li><a class="level is-mobile" href="#Les-commandes-essentielles"><span class="level-left"><span class="level-item">3</span><span class="level-item">Les commandes essentielles</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Docker-commande"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Docker commande</span></span></a></li><li><a class="level is-mobile" href="#Docker-Hub"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Docker Hub</span></span></a></li><li><a class="level is-mobile" href="#Espace-de-stockage"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">Espace de stockage</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Volumn"><span class="level-left"><span class="level-item">3.3.1</span><span class="level-item">Volumn</span></span></a></li><li><a class="level is-mobile" href="#Bind-mount"><span class="level-left"><span class="level-item">3.3.2</span><span class="level-item">Bind mount</span></span></a></li><li><a class="level is-mobile" href="#Le-commande-cp"><span class="level-left"><span class="level-item">3.3.3</span><span class="level-item">Le commande cp</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Networks"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">Networks</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Publier-le-port"><span class="level-left"><span class="level-item">3.4.1</span><span class="level-item">Publier le port:</span></span></a></li><li><a class="level is-mobile" href="#3-type-de-reseaux"><span class="level-left"><span class="level-item">3.4.2</span><span class="level-item">3 type de réseaux</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Bridge"><span class="level-left"><span class="level-item">3.4.2.1</span><span class="level-item">Bridge</span></span></a></li></ul></li></ul></li></ul></li><li><a class="level is-mobile" href="#Creation-de-conteneurs-personnalises"><span class="level-left"><span class="level-item">4</span><span class="level-item">Création de conteneurs personnalisés</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Dockerfile"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">Dockerfile</span></span></a></li><li><a class="level is-mobile" href="#Construire-une-image"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">Construire une image</span></span></a></li><li><a class="level is-mobile" href="#Layers-et-image-cache"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">Layers et image cache</span></span></a></li><li><a class="level is-mobile" href="#ENTRYPOINT-et-CMD"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">ENTRYPOINT et CMD</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#CMD"><span class="level-left"><span class="level-item">4.4.1</span><span class="level-item">CMD</span></span></a></li><li><a class="level is-mobile" href="#Exec-Form"><span class="level-left"><span class="level-item">4.4.2</span><span class="level-item">Exec Form</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Multi-stage-build"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">Multi-stage build</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Mettre-en-oeuvre-une-application-multiconteneur"><span class="level-left"><span class="level-item">5</span><span class="level-item">Mettre en oeuvre une application multiconteneur</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Docker-compose"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Docker compose</span></span></a></li><li><a class="level is-mobile" href="#Commandes-de-compostion-utiles"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">Commandes de compostion utiles</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Administraters-des-conteneurs-en-production"><span class="level-left"><span class="level-item">6</span><span class="level-item">Administraters des conteneurs en production</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Docker-Registry"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">Docker Registry</span></span></a></li><li><a class="level is-mobile" href="#Automatiser-le-demarrage-des-conteneurs"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">Automatiser le démarrage des conteneurs</span></span></a></li><li><a class="level is-mobile" href="#Gerer-l’affectation-des-ressources"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">Gérer l’affectation des ressources</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2023 Yejia SHI</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">Visited by <span id="busuanzi_value_site_uv">0</span> users</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div><script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
